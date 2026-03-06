@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Cat Meme Gallery</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background: linear-gradient(135deg,#ffe6f2,#e6f7ff);
+}
+
+h1{
+    font-size:40px;
+    color:#444;
+}
+
+#image{
+    width:600px;
+    height:350px;
+    border:4px dashed #444;
+    border-radius:15px;
+    margin:20px auto;
+    background-color:#fff;
+    background-size:cover;
+    background-position:center;
+    line-height:350px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,150px);
+    gap:15px;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.preview{
+    width:150px;
+    height:150px;
+    border:3px solid #444;
+    border-radius:12px;
+    object-fit:cover;
+    transition:transform 0.25s, box-shadow 0.25s;
+}
+
+.preview:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+</style>
+
+<script>
+
+function upDate(previewPic){
+
+    console.log("Event triggered");
+    console.log("Alt text:", previewPic.alt);
+    console.log("Image source:", previewPic.src);
+
+    document.getElementById("image").innerHTML = previewPic.alt;
+
+    document.getElementById("image").style.backgroundImage =
+        "url('" + previewPic.src + "')";
+}
+
+function undo(){
+
+    document.getElementById("image").style.backgroundImage = "url('')";
+
+    document.getElementById("image").innerHTML =
+    "Hover over a cat meme below 🐾";
+}
+
+function addTabFocus(){
+
+    console.log("Page loaded - adding tabindex");
+
+    var images = document.querySelectorAll(".preview");
+
+    for (var i = 0; i < images.length; i++){
+        images[i].setAttribute("tabindex","0");
+    }
+}
+
+</script>
+
+</head>
+
+<body onload="addTabFocus()">
+
+<h1>Cat Memes Photo Gallery</h1>
+
+<div id="image">
+Hover over a cat meme below 🐾
+</div>
+
+<div class="gallery">
+
+<img class="preview"
+src="https://media.tenor.com/zqSA5TmyIYUAAAAM/sus-cat-2-suspicious-cat.gif"
+alt="Suspicious looking cat meme"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+
+<img class="preview"
+src="https://media.tenor.com/mS0qo_4XSCUAAAAM/muhehehe.gif"
+alt="Cat laughing mischievously"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+
+<img class="preview"
+src="https://i.redd.it/xc7nhtys0f3f1.gif"
+alt="Happy dancing cat meme"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+
+<img class="preview"
+src="https://i.pinimg.com/originals/45/63/65/4563654f24b1b1bb5588a67042c3ac59.gif"
+alt="Cat dramatically staring"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+
+<img class="preview"
+src="https://i.imgur.com/jNKSgDp.gif"
+alt="Confused cat meme"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+
+<img class="preview"
+src="https://media.tenor.com/QWSXGYQHn4oAAAAM/yippee-iluvmybf.gif"
+alt="Excited jumping cat meme"
+onmouseover="upDate(this)"
+onmouseleave="undo()"
+onfocus="upDate(this)"
+onblur="undo()">
+</div>
+
+</body>
+</html>
